@@ -1,14 +1,11 @@
 const { Modules } = require("@medusajs/utils")
 
 const DB_URL = process.env.DATABASE_URL 
-
-// Medusa v2 cần thiết lập này
 const enableMedusaV2 = process.env.MEDUSA_FF_MEDUSA_V2 === "true" || true
 
 module.exports = {
   admin: {
-    // QUAN TRỌNG: Nếu bạn muốn vào trang quản trị (Dashboard), hãy để là FALSE
-    // Nếu để TRUE như code cũ của bạn, Render sẽ không build giao diện Admin.
+    // Để false để Render build giao diện quản trị cho Lavender Prime Studio
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true" || false,
     backendUrl: process.env.MEDUSA_BACKEND_URL || "https://medusa-lavender.onrender.com"
   },
@@ -16,13 +13,11 @@ module.exports = {
     databaseUrl: DB_URL,
     databaseType: "postgres",
     databaseExtra: { 
-      // Cần thiết cho Neon.tech vì kết nối qua SSL
       ssl: { rejectUnauthorized: false } 
     },
     http: {
-      jwtSecret: process.env.JWT_SECRET,
-      cookieSecret: process.env.COOKIE_SECRET,
-      // Cấu hình CORS để Admin và Storefront truy cập được backend
+      jwtSecret: process.env.JWT_SECRET || "supersecret",
+      cookieSecret: process.env.COOKIE_SECRET || "supersecret",
       storeCors: process.env.STORE_CORS || "http://localhost:8000",
       adminCors: process.env.ADMIN_CORS || "http://localhost:7000,https://medusa-lavender.onrender.com",
     },
@@ -48,8 +43,8 @@ module.exports = {
       options: {
         providers: [
           {
-            // Tên package chính xác cho Medusa v2 thường là @medusajs/file-cloudinary
-            resolve: "@medusajs/file-cloudinary",
+            // SỬA Ở ĐÂY: Bỏ @medusajs/ nếu bạn dùng package medusa-file-cloudinary
+            resolve: "medusa-file-cloudinary",
             id: "cloudinary",
             options: {
               cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -61,7 +56,6 @@ module.exports = {
         ],
       },
     },
-    // Các module mặc định giữ nguyên như bạn đã soạn
     [Modules.PRODUCT]: true,
     [Modules.PRICING]: true,
     [Modules.PROMOTION]: true,
