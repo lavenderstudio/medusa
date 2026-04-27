@@ -1,5 +1,12 @@
 # @medusajs/payment
 
+## 2.14.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @medusajs/framework@2.14.2
+
 ## 2.14.1
 
 ### Patch Changes

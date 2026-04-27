@@ -1,5 +1,14 @@
 # @medusajs/core-flows
 
+## 2.14.2
+
+### Patch Changes
+
+- [#15153](https://github.com/medusajs/medusa/pull/15153) [`bd162f7a93e326c73b9929918b5bb9e3a458cc77`](https://github.com/medusajs/medusa/commit/bd162f7a93e326c73b9929918b5bb9e3a458cc77) Thanks [@langovoi](https://github.com/langovoi)! - fix(core-flows): cancel-order credit line ignores pre-existing refunds
+
+- Updated dependencies []:
+  - @medusajs/framework@2.14.2
+
 ## 2.14.1
 
 ### Patch Changes
