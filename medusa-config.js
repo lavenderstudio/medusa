@@ -1,4 +1,4 @@
-import { Modules, defineConfig } from "@medusajs/utils"
+import { defineConfig } from "@medusajs/utils"
 
 export default defineConfig({
   projectConfig: {
@@ -18,27 +18,6 @@ export default defineConfig({
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true" || false,
     backendUrl: process.env.MEDUSA_BACKEND_URL || "https://medusa-lavender.onrender.com"
   },
-  modules: {
-    [Modules.CACHE]: {
-      resolve: "@medusajs/cache-inmemory",
-      options: { ttl: 0 },
-    },
-    [Modules.FILE]: {
-      resolve: "@medusajs/file",
-      options: {
-        providers: [
-          {
-            resolve: "medusa-file-cloudinary",
-            id: "cloudinary",
-            options: {
-              cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-              api_key: process.env.CLOUDINARY_API_KEY,
-              api_secret: process.env.CLOUDINARY_API_SECRET,
-              secure: true,
-            },
-          },
-        ],
-      },
-    },
-  },
+  // Tạm thời để trống modules để Medusa dùng cấu hình mặc định (Zero-config)
+  modules: {}
 })
