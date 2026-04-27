@@ -2,6 +2,8 @@ import { defineConfig } from "@medusajs/utils"
 
 export default defineConfig({
   projectConfig: {
+    // QUAN TRỌNG: Lấy port từ môi trường Render
+    port: process.env.PORT ? parseInt(process.env.PORT) : 9000,
     databaseUrl: process.env.DATABASE_URL,
     databaseType: "postgres",
     databaseExtra: { 
