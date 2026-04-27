@@ -10,9 +10,10 @@
     "dev": "medusa develop"
   },
   "dependencies": {
-    "@medusajs/medusa": "latest",
-    "@medusajs/medusa-cli": "latest",
-    "@medusajs/utils": "latest",
+    "@medusajs/medusa": "2.0.0-rc.2",
+    "@medusajs/admin-sdk": "2.0.0-rc.2",
+    "@medusajs/utils": "2.0.0-rc.2",
+    "@medusajs/medusa-cli": "2.0.0-rc.2",
     "medusa-file-cloudinary": "latest"
   },
   "devDependencies": {
