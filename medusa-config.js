@@ -17,7 +17,5 @@ export default defineConfig({
   admin: {
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true" || false,
     backendUrl: process.env.MEDUSA_BACKEND_URL || "https://medusa-lavender.onrender.com"
-  },
-  // Tạm thời để trống modules để Medusa dùng cấu hình mặc định (Zero-config)
-  modules: {}
+  }
 })
