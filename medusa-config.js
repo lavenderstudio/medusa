@@ -2,7 +2,6 @@ import { defineConfig } from "@medusajs/utils"
 
 export default defineConfig({
   projectConfig: {
-    // QUAN TRỌNG: Lấy port từ môi trường Render
     port: process.env.PORT ? parseInt(process.env.PORT) : 9000,
     databaseUrl: process.env.DATABASE_URL,
     databaseType: "postgres",
@@ -17,7 +16,8 @@ export default defineConfig({
     },
   },
   admin: {
-    disable: process.env.DISABLE_MEDUSA_ADMIN === "true" || false,
+    disable: false,
+    path: "/admin",
     backendUrl: process.env.MEDUSA_BACKEND_URL || "https://medusa-lavender.onrender.com"
   }
 })
