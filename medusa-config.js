@@ -16,8 +16,8 @@ export default defineConfig({
     },
   },
   admin: {
+    // Không cần path: "/admin" vì v2 mặc định đã là vậy
     disable: false,
-    path: "/admin",
     backendUrl: process.env.MEDUSA_BACKEND_URL || "https://medusa-lavender.onrender.com"
   }
 })
