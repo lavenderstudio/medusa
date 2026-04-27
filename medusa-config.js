@@ -1,6 +1,6 @@
-const { Modules, defineConfig } = require("@medusajs/utils")
+import { Modules, defineConfig } from "@medusajs/utils"
 
-module.exports = defineConfig({
+export default defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     databaseType: "postgres",
@@ -15,7 +15,7 @@ module.exports = defineConfig({
     },
   },
   admin: {
-    // Đặt là false để build giao diện quản trị cho Lavender Prime Studio
+    // Để false để sử dụng Dashboard quản trị
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true" || false,
     backendUrl: process.env.MEDUSA_BACKEND_URL || "https://medusa-lavender.onrender.com"
   },
