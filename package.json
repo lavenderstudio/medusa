@@ -1,5 +1,5 @@
 {
-  "name": "my-medusa-store",
+  "name": "medusa-lavender",
   "version": "0.0.1",
   "scripts": {
     "build": "medusa build",
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@medusajs/medusa": "latest",
-    "@medusajs/file-cloudinary": "latest",
+    "medusa-file-cloudinary": "latest", 
     "@medusajs/medusa-cli": "latest"
   },
   "engines": {
