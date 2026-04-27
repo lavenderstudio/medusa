@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "medusa build --admin",
+    "build": "medusa build",
     "start": "medusa start",
     "dev": "medusa develop"
   },
