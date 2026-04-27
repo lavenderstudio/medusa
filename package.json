@@ -8,11 +8,11 @@
     "dev": "medusa develop"
   },
   "dependencies": {
-    "@medusajs/medusa": "latest",
-    "@medusajs/cli": "latest",
-    "@medusajs/framework": "latest",
-    "@medusajs/utils": "latest",
-    "@medusajs/admin-sdk": "latest",
+    "@medusajs/medusa": "2.0.0",
+    "@medusajs/cli": "2.0.0",
+    "@medusajs/framework": "2.0.0",
+    "@medusajs/utils": "2.0.0",
+    "@medusajs/admin-sdk": "2.0.0",
     "medusa-file-cloudinary": "latest"
   },
   "devDependencies": {
