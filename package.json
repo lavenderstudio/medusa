@@ -15,8 +15,5 @@
     "@medusajs/admin-sdk": "latest",
     "typescript": "^5.0.0",
     "@types/node": "^20.0.0"
-  },
-  "engines": {
-    "node": ">=20"
   }
 }
