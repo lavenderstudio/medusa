@@ -15,11 +15,14 @@ export default defineConfig({
     },
   },
   admin: {
-    // Để false để sử dụng Dashboard quản trị
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true" || false,
     backendUrl: process.env.MEDUSA_BACKEND_URL || "https://medusa-lavender.onrender.com"
   },
   modules: {
+    [Modules.CACHE]: {
+      resolve: "@medusajs/cache-inmemory",
+      options: { ttl: 0 },
+    },
     [Modules.FILE]: {
       resolve: "@medusajs/file",
       options: {
@@ -36,10 +39,6 @@ export default defineConfig({
           },
         ],
       },
-    },
-    [Modules.CACHE]: {
-      resolve: "@medusajs/cache-inmemory",
-      options: { ttl: 0 },
     },
   },
 })
