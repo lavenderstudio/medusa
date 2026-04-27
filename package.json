@@ -1,17 +1,18 @@
 {
   "name": "medusa-lavender",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
     "build": "medusa build",
     "start": "medusa start",
     "dev": "medusa develop"
   },
   "dependencies": {
-    "@medusajs/medusa": "^2.0.0",
-    "@medusajs/admin-sdk": "^2.0.0",
-    "@medusajs/utils": "^2.0.0",
-    "@medusajs/medusa-cli": "^2.0.0",
-    "@medusajs/framework": "^2.0.0",
+    "@medusajs/medusa": "latest",
+    "@medusajs/cli": "latest",
+    "@medusajs/framework": "latest",
+    "@medusajs/utils": "latest",
+    "@medusajs/admin-sdk": "latest",
     "medusa-file-cloudinary": "latest"
   },
   "devDependencies": {
