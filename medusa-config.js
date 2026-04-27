@@ -2,22 +2,24 @@ import { defineConfig } from "@medusajs/utils"
 
 export default defineConfig({
   projectConfig: {
-    port: process.env.PORT ? parseInt(process.env.PORT) : 9000,
+    // Ép port và host chuẩn cho Render
+    port: process.env.PORT ? parseInt(process.env.PORT) : 10000,
     databaseUrl: process.env.DATABASE_URL,
     databaseType: "postgres",
     databaseExtra: { 
       ssl: { rejectUnauthorized: false } 
     },
+    // Vô hiệu hóa Redis để tránh lỗi "fake redis" trong sản xuất
+    redisUrl: process.env.REDIS_URL, 
     http: {
-      jwtSecret: process.env.JWT_SECRET || "supersecret_jwt_lavender",
-      cookieSecret: process.env.COOKIE_SECRET || "supersecret_cookie_lavender",
+      jwtSecret: process.env.JWT_SECRET || "lavender_prime_secret_2026",
+      cookieSecret: process.env.COOKIE_SECRET || "lavender_prime_cookie_2026",
       storeCors: process.env.STORE_CORS || "http://localhost:8000",
-      adminCors: process.env.ADMIN_CORS || "http://localhost:7000,https://medusa-lavender.onrender.com",
+      adminCors: process.env.ADMIN_CORS || "https://medusa-lavender.onrender.com",
     },
   },
   admin: {
-    // Không cần path: "/admin" vì v2 mặc định đã là vậy
     disable: false,
-    backendUrl: process.env.MEDUSA_BACKEND_URL || "https://medusa-lavender.onrender.com"
+    backendUrl: "https://medusa-lavender.onrender.com"
   }
 })
