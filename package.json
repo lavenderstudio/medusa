@@ -1,19 +1,17 @@
 {
   "name": "medusa-lavender",
   "version": "0.0.1",
-  "description": "Lavender Prime Studio Backend",
-  "author": "Lavender Studio",
-  "license": "MIT",
   "scripts": {
     "build": "medusa build",
     "start": "medusa start",
     "dev": "medusa develop"
   },
   "dependencies": {
-    "@medusajs/medusa": "2.0.0-rc.2",
-    "@medusajs/admin-sdk": "2.0.0-rc.2",
-    "@medusajs/utils": "2.0.0-rc.2",
-    "@medusajs/medusa-cli": "2.0.0-rc.2",
+    "@medusajs/medusa": "^2.0.0",
+    "@medusajs/admin-sdk": "^2.0.0",
+    "@medusajs/utils": "^2.0.0",
+    "@medusajs/medusa-cli": "^2.0.0",
+    "@medusajs/framework": "^2.0.0",
     "medusa-file-cloudinary": "latest"
   },
   "devDependencies": {
