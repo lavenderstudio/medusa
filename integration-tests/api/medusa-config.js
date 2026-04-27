@@ -1,39 +1,30 @@
 const { Modules } = require("@medusajs/utils")
 
-// Render dùng DATABASE_URL trực tiếp từ Neon
 const DB_URL = process.env.DATABASE_URL 
 
-process.env.LOG_LEVEL = "error"
+// Medusa v2 cần thiết lập này
 const enableMedusaV2 = process.env.MEDUSA_FF_MEDUSA_V2 === "true" || true
-
-const customPaymentProvider = {
-  resolve: {
-    services: [require("@medusajs/payment/dist/providers/system").default],
-  },
-  id: "default_2",
-}
-
-const customFulfillmentProvider = {
-  resolve: "@medusajs/fulfillment-manual",
-  id: "test-provider",
-}
 
 module.exports = {
   admin: {
-    // Nếu bạn muốn dùng giao diện quản trị, hãy đổi true thành false
-    disable: process.env.DISABLE_MEDUSA_ADMIN === "true" || true,
+    // QUAN TRỌNG: Nếu bạn muốn vào trang quản trị (Dashboard), hãy để là FALSE
+    // Nếu để TRUE như code cũ của bạn, Render sẽ không build giao diện Admin.
+    disable: process.env.DISABLE_MEDUSA_ADMIN === "true" || false,
+    backendUrl: process.env.MEDUSA_BACKEND_URL || "https://medusa-lavender.onrender.com"
   },
-  plugins: [],
   projectConfig: {
     databaseUrl: DB_URL,
     databaseType: "postgres",
-    // Cấu hình bắt buộc để kết nối Neon.tech từ Render
     databaseExtra: { 
+      // Cần thiết cho Neon.tech vì kết nối qua SSL
       ssl: { rejectUnauthorized: false } 
     },
     http: {
       jwtSecret: process.env.JWT_SECRET,
       cookieSecret: process.env.COOKIE_SECRET,
+      // Cấu hình CORS để Admin và Storefront truy cập được backend
+      storeCors: process.env.STORE_CORS || "http://localhost:8000",
+      adminCors: process.env.ADMIN_CORS || "http://localhost:7000,https://medusa-lavender.onrender.com",
     },
   },
   featureFlags: {
@@ -57,7 +48,7 @@ module.exports = {
       options: {
         providers: [
           {
-            // Cấu hình Cloudinary để lưu và xử lý Mockup
+            // Tên package chính xác cho Medusa v2 thường là @medusajs/file-cloudinary
             resolve: "@medusajs/file-cloudinary",
             id: "cloudinary",
             options: {
@@ -70,8 +61,7 @@ module.exports = {
         ],
       },
     },
-    [Modules.STOCK_LOCATION]: { resolve: "@medusajs/stock-location", options: {} },
-    [Modules.INVENTORY]: { resolve: "@medusajs/inventory", options: {} },
+    // Các module mặc định giữ nguyên như bạn đã soạn
     [Modules.PRODUCT]: true,
     [Modules.PRICING]: true,
     [Modules.PROMOTION]: true,
@@ -88,23 +78,34 @@ module.exports = {
     [Modules.PAYMENT]: {
       resolve: "@medusajs/payment",
       options: {
-        providers: [customPaymentProvider],
+        providers: [
+          {
+            resolve: "@medusajs/payment-manual",
+            id: "manual",
+          }
+        ],
       },
     },
     [Modules.FULFILLMENT]: {
+      resolve: "@medusajs/fulfillment",
       options: {
-        providers: [customFulfillmentProvider],
+        providers: [
+          {
+            resolve: "@medusajs/fulfillment-manual",
+            id: "manual",
+          }
+        ],
       },
     },
     [Modules.NOTIFICATION]: {
+      resolve: "@medusajs/notification",
       options: {
         providers: [
           {
             resolve: "@medusajs/notification-local",
-            id: "local-notification-provider",
+            id: "local",
             options: {
-              name: "Local Notification Provider",
-              channels: ["log", "email"],
+              channels: ["log"],
             },
           },
         ],
