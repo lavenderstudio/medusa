@@ -16,8 +16,8 @@ export default defineConfig({
     },
   },
   admin: {
-    disable: false, // BẬT LẠI ADMIN
-    path: "/admin", // Xác định rõ đường dẫn
+    disable: false,
+    path: "/dashboard", // Đã đổi thành /dashboard để không trùng với /admin của hệ thống
     backendUrl: "https://medusa-lavender.onrender.com"
   }
 })
