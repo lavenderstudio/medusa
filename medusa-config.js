@@ -17,6 +17,8 @@ export default defineConfig({
   },
   admin: {
     disable: false,
+    // THAY ĐỔI QUAN TRỌNG: Đưa vào thư mục 'build' thay vì '.medusa'
+    outDir: "build", 
     backendUrl: "https://medusa-lavender.onrender.com"
   }
 })
