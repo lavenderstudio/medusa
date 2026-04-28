@@ -17,8 +17,6 @@ export default defineConfig({
   },
   admin: {
     disable: false,
-    // Ép Medusa dùng thư mục này để chứa file giao diện
-    outDir: "./.medusa/admin",
     backendUrl: "https://medusa-lavender.onrender.com"
   }
 })
