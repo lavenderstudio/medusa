@@ -11,12 +11,13 @@ export default defineConfig({
     http: {
       jwtSecret: process.env.JWT_SECRET || "lavender_prime_secret_2026",
       cookieSecret: process.env.COOKIE_SECRET || "lavender_prime_cookie_2026",
-      storeCors: process.env.STORE_CORS || "http://localhost:8000",
+      storeCors: process.env.STORE_CORS || "http://localhost:8000,https://medusa-lavender.onrender.com",
       adminCors: process.env.ADMIN_CORS || "https://medusa-lavender.onrender.com",
     },
   },
-  // TẠM THỜI VÔ HIỆU HÓA ADMIN ĐỂ SERVER KHÔNG BỊ SẬP KHI TÌM FILE
   admin: {
-    disable: true 
+    disable: false, // BẬT LẠI ADMIN
+    path: "/admin", // Xác định rõ đường dẫn
+    backendUrl: "https://medusa-lavender.onrender.com"
   }
 })
