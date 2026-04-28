@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "medusa build && cp -r .medusa/admin dist/ || true",
+    "build": "medusa build && medusa build --admin-only",
     "start": "medusa start",
     "dev": "medusa develop"
   },
